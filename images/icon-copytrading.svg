@@ -1,0 +1,9 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Flèche vers la droite (haut) -->
+  <path d="M12 20C14 16 18 13 24 13H28" stroke="#2ecc71" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <polyline points="25,10 30,13 25,16" fill="none" stroke="#2ecc71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Flèche vers la gauche (bas) -->
+  <path d="M38 30C36 34 32 37 26 37H22" stroke="#2ecc71" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <polyline points="25,40 20,37 25,34" fill="none" stroke="#2ecc71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

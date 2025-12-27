@@ -1,0 +1,207 @@
+[build]
+  publish = "."
+
+# ----------------------------
+# Security & privacy headers
+# ----------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Sécurité
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    # CSP permissive mais sûre pour tes ressources actuelles (GA4, AOS, YouTube, Fonts, Translate)
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://translate.google.com https://translate.googleapis.com https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com; frame-ancestors 'none'; upgrade-insecure-requests"
+
+# Langue EN prioritaire sur le sous-répertoire /en
+[[headers]]
+  for = "/en/*"
+  [headers.values]
+    Content-Language = "en"
+
+# Langue FR par défaut pour le reste des pages HTML
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Content-Language = "fr"
+    # Évite la mise en cache agressive des pages HTML
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+# Caching long pour assets (Netlify gère la compression Brotli/Gzip automatiquement)
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ----------------------------
+# Redirects (alignés canoniques)
+# ----------------------------
+
+# EN: canonicaliser vers /en/ (évite /en/index.html)
+[[redirects]]
+  from = "/en/index.html"
+  to = "/en/"
+  status = 200
+  force = false
+
+# Blog & pages satellites : rediriger les .html vers les URLs canoniques sans extension
+[[redirects]]
+  from = "/blog.html"
+  to = "/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/en/blog.html"
+  to = "/en/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog"
+  to = "/en/blog.html"
+  status = 200
+  force = false
+
+# Articles FR
+[[redirects]]
+  from = "/blog-1"
+  to = "/blog-1.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-1/"
+  to = "/blog-1.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-2.html"
+  to = "/blog-2"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-2"
+  to = "/blog-2.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/blog-3.html"
+  to = "/blog-3"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-3"
+  to = "/blog-3.html"
+  status = 200
+  force = false
+
+# Articles EN
+[[redirects]]
+  from = "/en/blog-1"
+  to = "/en/blog-1.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog-1/"
+  to = "/en/blog-1.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog-2.html"
+  to = "/en/blog-2"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog-2"
+  to = "/en/blog-2.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/en/blog-3.html"
+  to = "/en/blog-3"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog-3"
+  to = "/en/blog-3.html"
+  status = 200
+  force = false
+
+# Pages légales FR / EN : garder la version sans extension
+[[redirects]]
+  from = "/mentions-legales.html"
+  to = "/mentions-legales"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/mentions-legales"
+  to = "/mentions-legales.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/politique-de-confidentialite.html"
+  to = "/politique-de-confidentialite"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/politique-de-confidentialite"
+  to = "/politique-de-confidentialite.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/en/legal-notice.html"
+  to = "/en/legal-notice"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/legal-notice"
+  to = "/en/legal-notice.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/en/privacy-policy.html"
+  to = "/en/privacy-policy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/privacy-policy"
+  to = "/en/privacy-policy.html"
+  status = 200
+  force = false
