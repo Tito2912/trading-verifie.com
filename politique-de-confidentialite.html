@@ -295,37 +295,42 @@
       };
     })();
   </script>
-<!-- JSON-LD: Organization + WebSite + PrivacyPolicy(WebPage) + BreadcrumbList -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"E-Com Shop",
-    "url":"https://trading-verifie.com",
-    "logo":"https://trading-verifie.com/images/logo.png",
-    "sameAs":[ "https://www.youtube.com/@ByeByeSalariat" ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"Guide eToro 2025",
-    "url":"https://trading-verifie.com"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"PrivacyPolicy",
-    "name":"Politique de confidentialité",
-    "url":"https://trading-verifie.com/politique-de-confidentialite",
-    "isPartOf":{"@type":"WebSite","name":"Guide eToro 2025","url":"https://trading-verifie.com"}
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
+	<!-- JSON-LD: Organization + WebSite + PrivacyPolicy(WebPage) + BreadcrumbList -->
+	  <script type="application/ld+json">
+	  {
+	    "@context":"https://schema.org",
+	    "@type":"Organization",
+	    "@id":"https://trading-verifie.com/#organization",
+	    "name":"E-Com Shop",
+	    "url":"https://trading-verifie.com",
+	    "logo":"https://trading-verifie.com/images/logo.png",
+	    "sameAs":[ "https://www.youtube.com/@ByeByeSalariat" ]
+	  }
+	  </script>
+	  <script type="application/ld+json">
+	  {
+	    "@context":"https://schema.org",
+	    "@type":"WebSite",
+	    "@id":"https://trading-verifie.com/#website",
+	    "name":"Guide eToro 2025",
+	    "url":"https://trading-verifie.com",
+	    "publisher":{"@id":"https://trading-verifie.com/#organization"}
+	  }
+	  </script>
+	  <script type="application/ld+json">
+	  {
+	    "@context":"https://schema.org",
+	    "@type":["WebPage","PrivacyPolicy"],
+	    "@id":"https://trading-verifie.com/politique-de-confidentialite#webpage",
+	    "name":"Politique de confidentialité",
+	    "url":"https://trading-verifie.com/politique-de-confidentialite",
+	    "inLanguage":"fr-FR",
+	    "isPartOf":{"@id":"https://trading-verifie.com/#website"}
+	  }
+	  </script>
+	  <script type="application/ld+json">
+	  {
+	    "@context":"https://schema.org",
     "@type":"BreadcrumbList",
     "itemListElement":[
       {"@type":"ListItem","position":1,"item":{"@id":"https://trading-verifie.com/","name":"Accueil"}},

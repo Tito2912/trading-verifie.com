@@ -284,37 +284,42 @@
      });
    });
   </script>
-<!-- JSON-LD: Organization + WebSite + PrivacyPolicy(WebPage) + BreadcrumbList -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"E-Com Shop",
-    "url":"https://trading-verifie.com",
-    "logo":"https://trading-verifie.com/images/logo.png",
-    "sameAs":[ "https://www.youtube.com/@ByeByeSalariat" ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"eToro Guide 2025",
-    "url":"https://trading-verifie.com"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"PrivacyPolicy",
-    "name":"Privacy policy",
-    "url":"https://trading-verifie.com/en/privacy-policy",
-    "isPartOf":{"@type":"WebSite","name":"eToro Guide 2025","url":"https://trading-verifie.com"}
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
+	<!-- JSON-LD: Organization + WebSite + PrivacyPolicy(WebPage) + BreadcrumbList -->
+	  <script type="application/ld+json">
+	  {
+	    "@context":"https://schema.org",
+	    "@type":"Organization",
+	    "@id":"https://trading-verifie.com/#organization",
+	    "name":"E-Com Shop",
+	    "url":"https://trading-verifie.com",
+	    "logo":"https://trading-verifie.com/images/logo.png",
+	    "sameAs":[ "https://www.youtube.com/@ByeByeSalariat" ]
+	  }
+	  </script>
+	  <script type="application/ld+json">
+	  {
+	    "@context":"https://schema.org",
+	    "@type":"WebSite",
+	    "@id":"https://trading-verifie.com/#website",
+	    "name":"eToro Guide 2025",
+	    "url":"https://trading-verifie.com",
+	    "publisher":{"@id":"https://trading-verifie.com/#organization"}
+	  }
+	  </script>
+	  <script type="application/ld+json">
+	  {
+	    "@context":"https://schema.org",
+	    "@type":["WebPage","PrivacyPolicy"],
+	    "@id":"https://trading-verifie.com/en/privacy-policy#webpage",
+	    "name":"Privacy policy",
+	    "url":"https://trading-verifie.com/en/privacy-policy",
+	    "inLanguage":"en-US",
+	    "isPartOf":{"@id":"https://trading-verifie.com/#website"}
+	  }
+	  </script>
+	  <script type="application/ld+json">
+	  {
+	    "@context":"https://schema.org",
     "@type":"BreadcrumbList",
     "itemListElement":[
       {"@type":"ListItem","position":1,"item":{"@id":"https://trading-verifie.com/en/","name":"Home"}},
