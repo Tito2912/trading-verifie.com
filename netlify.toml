@@ -66,8 +66,20 @@
   force = true
 
 [[redirects]]
+  from = "/bitpanda.html"
+  to = "/bitpanda"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/blog"
   to = "/blog.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/bitpanda"
+  to = "/bitpanda.html"
   status = 200
   force = false
 
@@ -78,8 +90,20 @@
   force = true
 
 [[redirects]]
+  from = "/en/bitpanda.html"
+  to = "/en/bitpanda"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/en/blog"
   to = "/en/blog.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/en/bitpanda"
+  to = "/en/bitpanda.html"
   status = 200
   force = false
 

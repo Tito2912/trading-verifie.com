@@ -18,6 +18,9 @@
 # Gestion 404
 # ------------
 /blog.html   /blog   301
+/bitpanda.html   /bitpanda   301
+/bitpanda/       /bitpanda   301
+/bitpanda        /bitpanda.html 200
 /blog-1      /blog-1.html 200
 /blog-1/     /blog-1      301!
 /blog-1.html /blog-1      301!
@@ -30,6 +33,9 @@
 /blog/       /blog   301
 /blog        /blog.html 200
 /en/blog.html   /en/blog   301
+/en/bitpanda.html   /en/bitpanda   301
+/en/bitpanda/       /en/bitpanda   301
+/en/bitpanda        /en/bitpanda.html 200
 /en/blog-1      /en/blog-1.html 200
 /en/blog-1/     /en/blog-1     301!
 /en/blog-1.html /en/blog-1     301!
@@ -61,3 +67,9 @@
 /politique-de-confidentialite.html  /politique-de-confidentialite  301
 /politique-de-confidentialite/     /politique-de-confidentialite  301
 /politique-de-confidentialite      /politique-de-confidentialite.html  200
+/es/bitpanda.html   /es/bitpanda   301
+/es/bitpanda/       /es/bitpanda   301
+/es/bitpanda        /es/bitpanda.html 200
+/de/bitpanda.html   /de/bitpanda   301
+/de/bitpanda/       /de/bitpanda   301
+/de/bitpanda        /de/bitpanda.html 200

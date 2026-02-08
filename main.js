@@ -1,4 +1,38 @@
+function isBot() {
+  const ua = (navigator.userAgent || '').toLowerCase();
+  return /(bot|crawler|spider|bingpreview|google|yahoo|duckduckbot|baiduspider|yandex|sogou|exabot|facebot|ia_archiver|headlesschrome|semrush)/.test(ua);
+}
+
+// Centralise les URLs d'affiliation (évite d'exposer les URLs externes aux bots)
+const AFFILIATE_TARGETS = {
+  // TODO: replace with your Bitpanda affiliate URL
+  bitpanda: 'https://www.bitpanda.com/'
+};
+
+function resolveAffiliateTarget(value) {
+  if (!value) return null;
+  if (/^https?:\/\//i.test(value)) return value;
+  return AFFILIATE_TARGETS[value] || null;
+}
+
+function hydrateAffiliateLinks() {
+  if (isBot()) return;
+  document.querySelectorAll('a[data-aff]').forEach((link) => {
+    const target = resolveAffiliateTarget(link.getAttribute('data-aff'));
+    if (!target || link.dataset.affHydrated) return;
+
+    link.setAttribute('href', target);
+    link.dataset.affHydrated = '1';
+
+    const relTokens = new Set((link.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+    relTokens.add('sponsored');
+    relTokens.add('noopener');
+    link.setAttribute('rel', Array.from(relTokens).join(' '));
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+  hydrateAffiliateLinks();
   // -----------------------
   // Menu Burger (a11y + UX)
   // -----------------------

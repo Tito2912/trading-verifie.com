@@ -30,6 +30,34 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://trading-verifie.com/de/"/>
 </url>
 
+  <!-- Bitpanda FR -->
+  <url>
+    <loc>https://trading-verifie.com/bitpanda</loc>
+    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://trading-verifie.com/bitpanda" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://trading-verifie.com/en/bitpanda" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://trading-verifie.com/bitpanda" />
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  
+    <xhtml:link rel="alternate" hreflang="es" href="https://trading-verifie.com/es/bitpanda"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://trading-verifie.com/de/bitpanda"/>
+</url>
+
+  <!-- Bitpanda EN -->
+  <url>
+    <loc>https://trading-verifie.com/en/bitpanda</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://trading-verifie.com/en/bitpanda" />
+    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://trading-verifie.com/bitpanda" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://trading-verifie.com/bitpanda" />
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  
+    <xhtml:link rel="alternate" hreflang="es" href="https://trading-verifie.com/es/bitpanda"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://trading-verifie.com/de/bitpanda"/>
+</url>
+
   <!-- Blog FR -->
   <url>
     <loc>https://trading-verifie.com/blog</loc>
