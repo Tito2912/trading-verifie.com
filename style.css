@@ -1070,3 +1070,34 @@ input:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+/* ========================= */
+/* Header: burger desktop UX */
+/* ========================= */
+.header .container{position:relative}
+.burger{display:flex}
+.nav{
+  position:absolute;
+  top:100%;
+  left:1rem;
+  right:1rem;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:1rem;
+  box-shadow:var(--shadow);
+  display:none;
+  z-index:1200;
+}
+.nav.active{display:flex}
+.nav-inner{flex-direction:column;align-items:flex-start;gap:.8rem;width:100%}
+.header .cta-btn.header-cta{padding:.65rem 1.2rem;font-size:1rem;border-radius:14px}
+.cta-btn.cta-btn--outline{
+  background:transparent;
+  color:var(--primary);
+  border:2px solid var(--primary);
+  box-shadow:none;
+}
+.cta-btn.cta-btn--outline:hover{
+  background:rgba(0,200,5,.08);
+}
