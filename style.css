@@ -1092,6 +1092,24 @@ input:focus-visible {
 .nav.active{display:flex}
 .nav-inner{flex-direction:column;align-items:flex-start;gap:.8rem;width:100%}
 .header .cta-btn.header-cta{padding:.65rem 1.2rem;font-size:1rem;border-radius:14px}
+.header .header-link{
+  display:inline-flex;
+  align-items:center;
+  padding:.25rem .35rem;
+  border-radius:12px;
+  color:var(--dark);
+  font-weight:700;
+  text-decoration:underline;
+  text-underline-offset:4px;
+  text-decoration-thickness:2px;
+  background:transparent;
+  border:1px solid transparent;
+  opacity:.85;
+}
+.header .header-link:hover{
+  opacity:1;
+  background:rgba(0,0,0,.04);
+}
 .cta-btn.cta-btn--outline{
   background:transparent;
   color:var(--primary);
