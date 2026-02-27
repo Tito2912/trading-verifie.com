@@ -5,10 +5,10 @@ export function SiteHeader() {
   return (
     <header className="header">
       <div className="header-inner">
-        <Link aria-label="Accueil" className="brand" href="/">
+        <a aria-label="Accueil" className="brand" href="/">
           <Image alt="Guide eToro" height={36} priority src="/images/logo.png" width={120} />
           <span>Guide eToro</span>
-        </Link>
+        </a>
 
         <nav aria-label="Primary" className="nav">
           <Link href="/bitpanda">Bitpanda</Link>
@@ -19,4 +19,3 @@ export function SiteHeader() {
     </header>
   );
 }
-
