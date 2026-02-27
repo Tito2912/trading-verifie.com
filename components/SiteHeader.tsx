@@ -5,13 +5,17 @@ export function SiteHeader() {
   return (
     <header className="header">
       <div className="header-inner">
-        <a aria-label="Accueil" className="brand" href="/">
-          <Image alt="Guide eToro" height={36} priority src="/images/logo.png" width={120} />
-          <span>Guide eToro</span>
-        </a>
+        <div className="brand-group">
+          <a aria-label="Accueil" className="brand" href="/">
+            <Image alt="Guide eToro" height={36} priority src="/images/logo.png" width={120} />
+            <span>Guide eToro</span>
+          </a>
+          <Link className="brand" href="/bitpanda">
+            Guide Bitpanda
+          </Link>
+        </div>
 
         <nav aria-label="Primary" className="nav">
-          <Link href="/bitpanda">Bitpanda</Link>
           <Link href="/blog">Blog</Link>
           <Link href="/mentions-legales">Mentions légales</Link>
         </nav>
