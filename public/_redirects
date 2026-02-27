@@ -78,16 +78,17 @@ https://www.trading-verifie.com/* https://trading-verifie.com/:splat 301!
 /de/blog-3/ /de/blog/copytrading-start-2025 301!
 
 # Rewrites: canonical pretty URLs -> exported .html files
-/blog /blog.html 200
-/bitpanda /bitpanda.html 200
-/mentions-legales /mentions-legales.html 200
-/politique-de-confidentialite /politique-de-confidentialite.html 200
-/blog/* /blog/:splat.html 200
+# Force rewrites (200!) because Next export creates folders like /blog/ and /en/ containing __next data.
+/blog /blog.html 200!
+/bitpanda /bitpanda.html 200!
+/mentions-legales /mentions-legales.html 200!
+/politique-de-confidentialite /politique-de-confidentialite.html 200!
+/blog/* /blog/:splat.html 200!
 
-/en/ /en.html 200
-/es/ /es.html 200
-/de/ /de.html 200
+/en/ /en.html 200!
+/es/ /es.html 200!
+/de/ /de.html 200!
 
-/en/* /en/:splat.html 200
-/es/* /es/:splat.html 200
-/de/* /de/:splat.html 200
+/en/* /en/:splat.html 200!
+/es/* /es/:splat.html 200!
+/de/* /de/:splat.html 200!
