@@ -5,6 +5,7 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const assetVersion = process.env.COMMIT_REF?.slice(0, 8) ?? 'dev';
   return (
     <html lang="fr">
       <head>
@@ -15,7 +16,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link as="font" crossOrigin="anonymous" href="/fonts/Inter-600-latin.woff2" rel="preload" type="font/woff2" />
         <link as="font" crossOrigin="anonymous" href="/fonts/Inter-700-latin.woff2" rel="preload" type="font/woff2" />
 
-        <link href="/style.min.css" rel="stylesheet" />
+        <link href={`/style.min.css?v=${assetVersion}`} rel="stylesheet" />
       </head>
       <body>
         <Script id="consent-default" strategy="beforeInteractive">
@@ -37,7 +38,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {children}
         <SiteFooter />
 
-        <Script src="/main.min.js" strategy="beforeInteractive" />
+        <Script src={`/main.min.js?v=${assetVersion}`} strategy="beforeInteractive" />
       </body>
     </html>
   );

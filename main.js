@@ -31,7 +31,7 @@ function hydrateAffiliateLinks() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+function onReady() {
   hydrateAffiliateLinks();
   // -----------------------
   // Menu Burger (a11y + UX)
@@ -104,7 +104,13 @@ document.addEventListener('DOMContentLoaded', function () {
   // Lite YouTube
   // -----------
   initLiteYoutube();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', onReady);
+} else {
+  onReady();
+}
 
 /**
  * Active GA4 uniquement APRES consentement (Consent Mode v2).
