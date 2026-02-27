@@ -1,18 +1,23 @@
 import type { ReactNode } from 'react';
-import type { Locale } from '@/lib/site';
+import type { TocHeading } from '@/components/TableOfContents';
 
-export type PageData = {
-  locale: Locale;
-  segments: string[];
+export type PostType = 'guide' | 'review' | 'comparison';
+
+export type Post = {
+  slug: string;
   title: string;
   description: string;
-  canonical: string;
-  alternates: Record<string, string>;
-  openGraph: {
-    type: 'website' | 'article';
-    image?: string;
-  };
-  jsonLdBlocks: string[];
+  date?: string;
+  updatedAt?: string;
+  canonical?: string;
+  type: PostType;
+  primaryKeyword?: string;
+  jumpLinks?: { href: string; label: string }[];
+  quickAnswer?: string[];
+  cta?: { title: string; body: string; buttonLabel: string; buttonHref: string };
+  internalLinks?: { href: string; anchor: string }[];
+  faq?: { q: string; a: string }[];
+  headings: TocHeading[];
   content: ReactNode;
 };
 

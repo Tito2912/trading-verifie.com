@@ -1,61 +1,46 @@
-import type { Locale } from '@/lib/site';
-import { routePath, toAbsoluteUrl } from '@/lib/site';
+import type { Post } from '@/lib/types';
 
-const ORG_JSON_LD = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'E-Com Shop',
-  url: 'https://trading-verifie.com',
-  logo: 'https://trading-verifie.com/images/logo.png',
-  sameAs: ['https://www.youtube.com/@ByeByeSalariat'],
-} as const;
+const BASE_URL = 'https://trading-verifie.com';
+const BRAND = 'Guide eToro';
+const PUBLISHER = 'E-Com Shop';
 
-const WEBSITE_JSON_LD = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'Guide eToro 2025',
-  url: 'https://trading-verifie.com',
-} as const;
+export function buildArticleJsonLd(post: Post) {
+  const url = new URL(post.canonical ?? `/${post.slug}`, BASE_URL).toString();
+  const published = post.date ?? post.updatedAt ?? new Date().toISOString();
+  const modified = post.updatedAt ?? published;
 
-const BREADCRUMB_HOME_NAME: Record<Locale, string> = {
-  fr: 'Accueil',
-  en: 'Home',
-  es: 'Inicio',
-  de: 'Startseite',
-};
-
-export function buildArticleJsonLdBlocks(opts: { locale: Locale; title: string; canonical: string; image: string }): string[] {
-  const blogUrl = toAbsoluteUrl(routePath(opts.locale, ['blog']));
-
-  const article = {
+  return {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: opts.title,
-    mainEntityOfPage: opts.canonical,
-    image: opts.image,
-    author: { '@type': 'Organization', name: 'E-Com Shop' },
-    publisher: {
-      '@type': 'Organization',
-      name: 'E-Com Shop',
-      logo: { '@type': 'ImageObject', url: 'https://trading-verifie.com/images/logo.png' },
-    },
-  } as const;
+    headline: post.title,
+    description: post.description,
+    mainEntityOfPage: url,
+    datePublished: published,
+    dateModified: modified,
+    author: [{ '@type': 'Organization', name: BRAND }],
+    publisher: { '@type': 'Organization', name: PUBLISHER },
+  };
+}
 
-  const breadcrumb = {
+export function buildBreadcrumbJsonLd(post: Post) {
+  const url = new URL(post.canonical ?? `/${post.slug}`, BASE_URL).toString();
+  return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, item: { '@id': toAbsoluteUrl(routePath(opts.locale, [])), name: BREADCRUMB_HOME_NAME[opts.locale] } },
-      { '@type': 'ListItem', position: 2, item: { '@id': blogUrl, name: 'Blog' } },
-      { '@type': 'ListItem', position: 3, item: { '@id': opts.canonical, name: opts.title } },
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Accueil',
+        item: BASE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: post.title,
+        item: url,
+      },
     ],
-  } as const;
-
-  return [
-    JSON.stringify(ORG_JSON_LD),
-    JSON.stringify(WEBSITE_JSON_LD),
-    JSON.stringify(article),
-    JSON.stringify(breadcrumb),
-  ];
+  };
 }
 
