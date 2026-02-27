@@ -77,21 +77,6 @@ https://www.trading-verifie.com/* https://trading-verifie.com/:splat 301!
 /de/blog-3.html /de/blog/copytrading-start-2025 301!
 /de/blog-3/ /de/blog/copytrading-start-2025 301!
 
-# Redirect exported .html variants to canonical pretty URLs
-/en.html /en/ 301!
-/es.html /es/ 301!
-/de.html /de/ 301!
-
-/blog.html /blog 301!
-/bitpanda.html /bitpanda 301!
-/mentions-legales.html /mentions-legales 301!
-/politique-de-confidentialite.html /politique-de-confidentialite 301!
-
-/blog/*.html /blog/:splat 301!
-/en/*.html /en/:splat 301!
-/es/*.html /es/:splat 301!
-/de/*.html /de/:splat 301!
-
 # Rewrites: canonical pretty URLs -> exported .html files
 /blog /blog.html 200
 /bitpanda /bitpanda.html 200
@@ -106,4 +91,3 @@ https://www.trading-verifie.com/* https://trading-verifie.com/:splat 301!
 /en/* /en/:splat.html 200
 /es/* /es/:splat.html 200
 /de/* /de/:splat.html 200
-
