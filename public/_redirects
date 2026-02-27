@@ -3,35 +3,10 @@ http://trading-verifie.com/* https://trading-verifie.com/:splat 301!
 http://www.trading-verifie.com/* https://trading-verifie.com/:splat 301!
 https://www.trading-verifie.com/* https://trading-verifie.com/:splat 301!
 
-# Locale roots: keep trailing slash (matches legacy canonicals)
-/en /en/ 301!
-/es /es/ 301!
-/de /de/ 301!
-
-# Strip trailing slashes (non-root pages)
-/blog/ /blog 301!
-/bitpanda/ /bitpanda 301!
-/mentions-legales/ /mentions-legales 301!
-/politique-de-confidentialite/ /politique-de-confidentialite 301!
-/blog/*/ /blog/:splat 301!
-
-/en/blog/ /en/blog 301!
-/en/bitpanda/ /en/bitpanda 301!
-/en/legal-notice/ /en/legal-notice 301!
-/en/privacy-policy/ /en/privacy-policy 301!
-/en/blog/*/ /en/blog/:splat 301!
-
-/es/blog/ /es/blog 301!
-/es/bitpanda/ /es/bitpanda 301!
-/es/legal-notice/ /es/legal-notice 301!
-/es/privacy-policy/ /es/privacy-policy 301!
-/es/blog/*/ /es/blog/:splat 301!
-
-/de/blog/ /de/blog 301!
-/de/bitpanda/ /de/bitpanda 301!
-/de/legal-notice/ /de/legal-notice 301!
-/de/privacy-policy/ /de/privacy-policy 301!
-/de/blog/*/ /de/blog/:splat 301!
+# NOTE: Avoid explicit /foo/ -> /foo redirects here.
+# Next export creates folders like /blog/ and /en/ containing __next data.
+# Netlify may internally normalize slashes for folder paths, which can cause redirect loops.
+# We instead force rewrites for both trailing-slash and no-trailing-slash variants below.
 
 # Old blog slugs -> new slugs (FR)
 /blog-1 /blog/pourquoi-choisir-etoro-2025 301!
@@ -78,17 +53,27 @@ https://www.trading-verifie.com/* https://trading-verifie.com/:splat 301!
 /de/blog-3/ /de/blog/copytrading-start-2025 301!
 
 # Rewrites: canonical pretty URLs -> exported .html files
-# Force rewrites (200!) because Next export creates folders like /blog/ and /en/ containing __next data.
+/blog/ /blog.html 200!
 /blog /blog.html 200!
+/bitpanda/ /bitpanda.html 200!
 /bitpanda /bitpanda.html 200!
+/mentions-legales/ /mentions-legales.html 200!
 /mentions-legales /mentions-legales.html 200!
+/politique-de-confidentialite/ /politique-de-confidentialite.html 200!
 /politique-de-confidentialite /politique-de-confidentialite.html 200!
+/blog/*/ /blog/:splat.html 200!
 /blog/* /blog/:splat.html 200!
 
 /en/ /en.html 200!
+/en /en.html 200!
 /es/ /es.html 200!
+/es /es.html 200!
 /de/ /de.html 200!
+/de /de.html 200!
 
+/en/*/ /en/:splat.html 200!
 /en/* /en/:splat.html 200!
+/es/*/ /es/:splat.html 200!
 /es/* /es/:splat.html 200!
+/de/*/ /de/:splat.html 200!
 /de/* /de/:splat.html 200!

@@ -45,6 +45,13 @@ function extractBetween(html: string, startNeedle: string, endNeedle: string): s
   return html.slice(start + startNeedle.length, end).trim();
 }
 
+function absolutizeAssetUrls(fragment: string): string {
+  return fragment.replace(
+    /(\b(?:src|href)=)(["'])(?!https?:|\/|data:|mailto:|tel:|#)(?:\.{1,2}\/)*((?:images|fonts|pdf)\/)/gi,
+    '$1$2/$3',
+  );
+}
+
 function legacyHtmlFile(locale: Locale, segments: string[]): string {
   if (locale === 'fr') {
     if (segments.length === 0) return 'index.html';
@@ -115,7 +122,7 @@ export async function getLegacyPage(locale: Locale, segments: string[]): Promise
     html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi),
   ).map((m) => m[1].trim());
 
-  const htmlContent = extractBetween(html, '</header>', '<footer') ?? '';
+  const htmlContent = absolutizeAssetUrls(extractBetween(html, '</header>', '<footer') ?? '');
 
   return {
     title,
@@ -127,4 +134,3 @@ export async function getLegacyPage(locale: Locale, segments: string[]): Promise
     htmlContent,
   };
 }
-
