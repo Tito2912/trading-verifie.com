@@ -1,5 +1,8 @@
 import type { ReactNode } from 'react';
 import Script from 'next/script';
+import './globals.css';
+import { SiteFooter } from '@/components/SiteFooter';
+import { SiteHeader } from '@/components/SiteHeader';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -30,7 +33,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           `}
         </Script>
 
+        <SiteHeader />
         {children}
+        <SiteFooter />
 
         <Script src="/main.min.js" strategy="beforeInteractive" />
       </body>

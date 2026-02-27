@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { SiteShell } from '@/components/SiteShell';
 import type { Locale } from '@/lib/site';
 import { isLocale } from '@/lib/site';
-import { getPageData } from '@/lib/page-data';
+import { getPageData } from '@/lib/content';
 import { toMetadata } from '@/lib/seo';
 import { BLOG_POSTS } from '@/lib/blog';
 
@@ -58,6 +57,12 @@ export default async function CatchAllPage({ params }: { params: Promise<{ slug:
   const { locale, segments } = parseLocaleAndSegments(slug);
   const page = await getPageData(locale, segments);
   if (!page) return notFound();
-  return <SiteShell page={page}>{page.content}</SiteShell>;
+  return (
+    <>
+      <div lang={page.locale === 'fr' ? 'fr' : page.locale}>{page.content}</div>
+      {page.jsonLdBlocks.map((block, idx) => (
+        <script key={idx} type="application/ld+json" dangerouslySetInnerHTML={{ __html: block }} />
+      ))}
+    </>
+  );
 }
-

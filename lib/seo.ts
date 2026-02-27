@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import type { PageData } from '@/lib/page-data';
+import type { PageData } from '@/lib/types';
 
 export function toMetadata(page: PageData): Metadata {
   const images = page.openGraph.image ? [page.openGraph.image] : undefined;
@@ -26,4 +26,3 @@ export function toMetadata(page: PageData): Metadata {
     },
   };
 }
-

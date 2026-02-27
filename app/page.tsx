@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { SiteShell } from '@/components/SiteShell';
-import { getPageData } from '@/lib/page-data';
+import { getPageData } from '@/lib/content';
 import { toMetadata } from '@/lib/seo';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -13,6 +12,12 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function HomePage() {
   const page = await getPageData('fr', []);
   if (!page) return notFound();
-  return <SiteShell page={page}>{page.content}</SiteShell>;
+  return (
+    <>
+      <div lang="fr">{page.content}</div>
+      {page.jsonLdBlocks.map((block, idx) => (
+        <script key={idx} type="application/ld+json" dangerouslySetInnerHTML={{ __html: block }} />
+      ))}
+    </>
+  );
 }
-
