@@ -1,0 +1,109 @@
+# Canonical host + HTTPS (best effort, Netlify settings may add an extra hop)
+http://trading-verifie.com/* https://trading-verifie.com/:splat 301!
+http://www.trading-verifie.com/* https://trading-verifie.com/:splat 301!
+https://www.trading-verifie.com/* https://trading-verifie.com/:splat 301!
+
+# Locale roots: keep trailing slash (matches legacy canonicals)
+/en /en/ 301!
+/es /es/ 301!
+/de /de/ 301!
+
+# Strip trailing slashes (non-root pages)
+/blog/ /blog 301!
+/bitpanda/ /bitpanda 301!
+/mentions-legales/ /mentions-legales 301!
+/politique-de-confidentialite/ /politique-de-confidentialite 301!
+/blog/*/ /blog/:splat 301!
+
+/en/blog/ /en/blog 301!
+/en/bitpanda/ /en/bitpanda 301!
+/en/legal-notice/ /en/legal-notice 301!
+/en/privacy-policy/ /en/privacy-policy 301!
+/en/blog/*/ /en/blog/:splat 301!
+
+/es/blog/ /es/blog 301!
+/es/bitpanda/ /es/bitpanda 301!
+/es/legal-notice/ /es/legal-notice 301!
+/es/privacy-policy/ /es/privacy-policy 301!
+/es/blog/*/ /es/blog/:splat 301!
+
+/de/blog/ /de/blog 301!
+/de/bitpanda/ /de/bitpanda 301!
+/de/legal-notice/ /de/legal-notice 301!
+/de/privacy-policy/ /de/privacy-policy 301!
+/de/blog/*/ /de/blog/:splat 301!
+
+# Old blog slugs -> new slugs (FR)
+/blog-1 /blog/pourquoi-choisir-etoro-2025 301!
+/blog-1.html /blog/pourquoi-choisir-etoro-2025 301!
+/blog-1/ /blog/pourquoi-choisir-etoro-2025 301!
+/blog-2 /blog/frais-etoro-2025 301!
+/blog-2.html /blog/frais-etoro-2025 301!
+/blog-2/ /blog/frais-etoro-2025 301!
+/blog-3 /blog/copytrading-demarrer-2025 301!
+/blog-3.html /blog/copytrading-demarrer-2025 301!
+/blog-3/ /blog/copytrading-demarrer-2025 301!
+
+# Old blog slugs -> new slugs (EN)
+/en/blog-1 /en/blog/why-choose-etoro-2025 301!
+/en/blog-1.html /en/blog/why-choose-etoro-2025 301!
+/en/blog-1/ /en/blog/why-choose-etoro-2025 301!
+/en/blog-2 /en/blog/etoro-fees-2025 301!
+/en/blog-2.html /en/blog/etoro-fees-2025 301!
+/en/blog-2/ /en/blog/etoro-fees-2025 301!
+/en/blog-3 /en/blog/copytrading-start-2025 301!
+/en/blog-3.html /en/blog/copytrading-start-2025 301!
+/en/blog-3/ /en/blog/copytrading-start-2025 301!
+
+# Old blog slugs -> new slugs (ES)
+/es/blog-1 /es/blog/por-que-elegir-etoro-2025 301!
+/es/blog-1.html /es/blog/por-que-elegir-etoro-2025 301!
+/es/blog-1/ /es/blog/por-que-elegir-etoro-2025 301!
+/es/blog-2 /es/blog/comisiones-etoro-2025 301!
+/es/blog-2.html /es/blog/comisiones-etoro-2025 301!
+/es/blog-2/ /es/blog/comisiones-etoro-2025 301!
+/es/blog-3 /es/blog/copytrading-empezar-2025 301!
+/es/blog-3.html /es/blog/copytrading-empezar-2025 301!
+/es/blog-3/ /es/blog/copytrading-empezar-2025 301!
+
+# Old blog slugs -> new slugs (DE)
+/de/blog-1 /de/blog/warum-etoro-2025 301!
+/de/blog-1.html /de/blog/warum-etoro-2025 301!
+/de/blog-1/ /de/blog/warum-etoro-2025 301!
+/de/blog-2 /de/blog/etoro-gebuehren-2025 301!
+/de/blog-2.html /de/blog/etoro-gebuehren-2025 301!
+/de/blog-2/ /de/blog/etoro-gebuehren-2025 301!
+/de/blog-3 /de/blog/copytrading-start-2025 301!
+/de/blog-3.html /de/blog/copytrading-start-2025 301!
+/de/blog-3/ /de/blog/copytrading-start-2025 301!
+
+# Redirect exported .html variants to canonical pretty URLs
+/en.html /en/ 301!
+/es.html /es/ 301!
+/de.html /de/ 301!
+
+/blog.html /blog 301!
+/bitpanda.html /bitpanda 301!
+/mentions-legales.html /mentions-legales 301!
+/politique-de-confidentialite.html /politique-de-confidentialite 301!
+
+/blog/*.html /blog/:splat 301!
+/en/*.html /en/:splat 301!
+/es/*.html /es/:splat 301!
+/de/*.html /de/:splat 301!
+
+# Rewrites: canonical pretty URLs -> exported .html files
+/blog /blog.html 200
+/bitpanda /bitpanda.html 200
+/mentions-legales /mentions-legales.html 200
+/politique-de-confidentialite /politique-de-confidentialite.html 200
+/blog/* /blog/:splat.html 200
+
+/en/ /en.html 200
+/es/ /es.html 200
+/de/ /de.html 200
+
+/en/* /en/:splat.html 200
+/es/* /es/:splat.html 200
+/de/* /de/:splat.html 200
+

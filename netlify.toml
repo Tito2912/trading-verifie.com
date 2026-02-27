@@ -1,5 +1,6 @@
 [build]
-  publish = "."
+  command = "npm run build"
+  publish = "out"
 
 # ----------------------------
 # Security & privacy headers
@@ -22,6 +23,31 @@
   for = "/en/*"
   [headers.values]
     Content-Language = "en"
+
+[[headers]]
+  for = "/en.html"
+  [headers.values]
+    Content-Language = "en"
+
+[[headers]]
+  for = "/es/*"
+  [headers.values]
+    Content-Language = "es"
+
+[[headers]]
+  for = "/es.html"
+  [headers.values]
+    Content-Language = "es"
+
+[[headers]]
+  for = "/de/*"
+  [headers.values]
+    Content-Language = "de"
+
+[[headers]]
+  for = "/de.html"
+  [headers.values]
+    Content-Language = "de"
 
 # Langue FR par défaut pour le reste des pages HTML
 [[headers]]
@@ -46,186 +72,3 @@
   for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-
-# ----------------------------
-# Redirects (alignés canoniques)
-# ----------------------------
-
-# EN: canonicaliser vers /en/ (évite /en/index.html)
-[[redirects]]
-  from = "/en/index.html"
-  to = "/en/"
-  status = 200
-  force = false
-
-# Blog & pages satellites : rediriger les .html vers les URLs canoniques sans extension
-[[redirects]]
-  from = "/blog.html"
-  to = "/blog"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/bitpanda.html"
-  to = "/bitpanda"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/blog"
-  to = "/blog.html"
-  status = 200
-  force = false
-
-[[redirects]]
-  from = "/bitpanda"
-  to = "/bitpanda.html"
-  status = 200
-  force = false
-
-[[redirects]]
-  from = "/en/blog.html"
-  to = "/en/blog"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/en/bitpanda.html"
-  to = "/en/bitpanda"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/en/blog"
-  to = "/en/blog.html"
-  status = 200
-  force = false
-
-[[redirects]]
-  from = "/en/bitpanda"
-  to = "/en/bitpanda.html"
-  status = 200
-  force = false
-
-# Articles FR
-[[redirects]]
-  from = "/blog-1"
-  to = "/blog-1.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/blog-1/"
-  to = "/blog-1.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/blog-2.html"
-  to = "/blog-2"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/blog-2"
-  to = "/blog-2.html"
-  status = 200
-  force = false
-
-[[redirects]]
-  from = "/blog-3.html"
-  to = "/blog-3"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/blog-3"
-  to = "/blog-3.html"
-  status = 200
-  force = false
-
-# Articles EN
-[[redirects]]
-  from = "/en/blog-1"
-  to = "/en/blog-1.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/en/blog-1/"
-  to = "/en/blog-1.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/en/blog-2.html"
-  to = "/en/blog-2"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/en/blog-2"
-  to = "/en/blog-2.html"
-  status = 200
-  force = false
-
-[[redirects]]
-  from = "/en/blog-3.html"
-  to = "/en/blog-3"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/en/blog-3"
-  to = "/en/blog-3.html"
-  status = 200
-  force = false
-
-# Pages légales FR / EN : garder la version sans extension
-[[redirects]]
-  from = "/mentions-legales.html"
-  to = "/mentions-legales"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/mentions-legales"
-  to = "/mentions-legales.html"
-  status = 200
-  force = false
-
-[[redirects]]
-  from = "/politique-de-confidentialite.html"
-  to = "/politique-de-confidentialite"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/politique-de-confidentialite"
-  to = "/politique-de-confidentialite.html"
-  status = 200
-  force = false
-
-[[redirects]]
-  from = "/en/legal-notice.html"
-  to = "/en/legal-notice"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/en/legal-notice"
-  to = "/en/legal-notice.html"
-  status = 200
-  force = false
-
-[[redirects]]
-  from = "/en/privacy-policy.html"
-  to = "/en/privacy-policy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/en/privacy-policy"
-  to = "/en/privacy-policy.html"
-  status = 200
-  force = false
