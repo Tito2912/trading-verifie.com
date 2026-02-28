@@ -20,6 +20,14 @@ export function SiteHeader() {
   const pathname = usePathname() ?? '/';
   const lang = getLangFromPathname(pathname);
   const prefix = lang === 'fr' ? '' : `/${lang}`;
+  const labels =
+    lang === 'en'
+      ? { home: 'Home', blog: 'Blog', legal: 'Legal notice' }
+      : lang === 'es'
+        ? { home: 'Inicio', blog: 'Blog', legal: 'Aviso legal' }
+        : lang === 'de'
+          ? { home: 'Startseite', blog: 'Blog', legal: 'Rechtliche Hinweise' }
+          : { home: 'Accueil', blog: 'Blog', legal: 'Mentions légales' };
 
   const homeHref = prefix || '/';
   const guideEtoroHref = `${prefix}/guide-etoro` || '/guide-etoro';
@@ -31,7 +39,7 @@ export function SiteHeader() {
     <header className="header">
       <div className="header-inner">
         <div className="brand-group">
-          <a aria-label="Accueil" className="brand" href={homeHref}>
+          <a aria-label={labels.home} className="brand" href={homeHref}>
             <Image alt="Guide eToro" height={36} priority src="/images/logo.png" width={120} />
           </a>
           <Link className="brand" href={guideEtoroHref}>
@@ -44,8 +52,8 @@ export function SiteHeader() {
 
         <div className="header-right">
           <nav aria-label="Primary" className="nav">
-            <Link href={blogHref}>Blog</Link>
-            <Link href={legalHref}>Mentions légales</Link>
+            <Link href={blogHref}>{labels.blog}</Link>
+            <Link href={legalHref}>{labels.legal}</Link>
           </nav>
           <LanguageSelect />
         </div>

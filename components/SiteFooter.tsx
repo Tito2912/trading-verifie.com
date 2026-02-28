@@ -18,6 +18,14 @@ export function SiteFooter() {
   const pathname = usePathname() ?? '/';
   const lang = getLangFromPathname(pathname);
   const prefix = lang === 'fr' ? '' : `/${lang}`;
+  const labels =
+    lang === 'en'
+      ? { privacy: 'Privacy', legal: 'Legal notice', contact: 'Contact' }
+      : lang === 'es'
+        ? { privacy: 'Privacidad', legal: 'Aviso legal', contact: 'Contacto' }
+        : lang === 'de'
+          ? { privacy: 'Datenschutz', legal: 'Rechtliche Hinweise', contact: 'Kontakt' }
+          : { privacy: 'Confidentialité', legal: 'Mentions légales', contact: 'Contact' };
 
   const privacyHref = lang === 'fr' ? '/politique-de-confidentialite' : `${prefix}/privacy-policy`;
   const legalHref = lang === 'fr' ? '/mentions-legales' : `${prefix}/legal-notice`;
@@ -27,9 +35,9 @@ export function SiteFooter() {
       <div className="footer-inner">
         <div>© {new Date().getFullYear()} — trading-verifie.com</div>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-          <Link href={privacyHref}>Confidentialité</Link>
-          <Link href={legalHref}>Mentions légales</Link>
-          <a href="mailto:contact.ecomshopfrance@gmail.com">Contact</a>
+          <Link href={privacyHref}>{labels.privacy}</Link>
+          <Link href={legalHref}>{labels.legal}</Link>
+          <a href="mailto:contact.ecomshopfrance@gmail.com">{labels.contact}</a>
         </div>
       </div>
     </footer>

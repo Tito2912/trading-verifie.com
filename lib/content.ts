@@ -207,6 +207,24 @@ async function readIndexItem(
 
 type Locale = 'en' | 'es' | 'de';
 
+export async function getLocalizedPageSlugs(lang: Locale): Promise<string[]> {
+  const dirPath = path.join(CONTENT_DIR, lang);
+  let entries: Array<{ name: string; isFile: () => boolean }>;
+  try {
+    entries = (await fs.readdir(dirPath, { withFileTypes: true })) as any;
+  } catch {
+    return [];
+  }
+
+  return entries
+    .filter((e) => e.isFile())
+    .map((e) => e.name)
+    .filter((name) => name.endsWith('.mdx'))
+    .map((name) => name.replace(/\.mdx$/, ''))
+    .filter((slug) => !slug.startsWith('_'))
+    .sort();
+}
+
 export async function getLocalizedPage(lang: Locale, slug: string): Promise<Post | null> {
   const filePath = path.join(CONTENT_DIR, lang, `${slug}.mdx`);
   const canonicalFallback = `/${lang}/${slug}`;

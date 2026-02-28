@@ -11,6 +11,31 @@ https://www.trading-verifie.com/* https://trading-verifie.com/:splat 301!
 /mentions-legales.html /mentions-legales 301!
 /politique-de-confidentialite.html /politique-de-confidentialite 301!
 
+# Locale .html -> canonical locale URLs
+/en.html /en 301!
+/en/index.html /en 301!
+/en/blog.html /en/blog 301!
+/en/guide-etoro.html /en/guide-etoro 301!
+/en/bitpanda.html /en/bitpanda 301!
+/en/legal-notice.html /en/legal-notice 301!
+/en/privacy-policy.html /en/privacy-policy 301!
+
+/es.html /es 301!
+/es/index.html /es 301!
+/es/blog.html /es/blog 301!
+/es/guide-etoro.html /es/guide-etoro 301!
+/es/bitpanda.html /es/bitpanda 301!
+/es/legal-notice.html /es/legal-notice 301!
+/es/privacy-policy.html /es/privacy-policy 301!
+
+/de.html /de 301!
+/de/index.html /de 301!
+/de/blog.html /de/blog 301!
+/de/guide-etoro.html /de/guide-etoro 301!
+/de/bitpanda.html /de/bitpanda 301!
+/de/legal-notice.html /de/legal-notice 301!
+/de/privacy-policy.html /de/privacy-policy 301!
+
 # Old blog numeric slugs -> canonical article URLs
 /blog-1 /pourquoi-choisir-etoro-2025 301!
 /blog-1.html /pourquoi-choisir-etoro-2025 301!
@@ -21,6 +46,37 @@ https://www.trading-verifie.com/* https://trading-verifie.com/:splat 301!
 /blog-3 /copytrading-demarrer-2025 301!
 /blog-3.html /copytrading-demarrer-2025 301!
 /blog-3/ /copytrading-demarrer-2025 301!
+
+# Locale: old numeric slugs -> canonical localized blog URLs
+/en/blog-1 /en/blog/why-choose-etoro-2025 301!
+/en/blog-1.html /en/blog/why-choose-etoro-2025 301!
+/en/blog-1/ /en/blog/why-choose-etoro-2025 301!
+/en/blog-2 /en/blog/etoro-fees-2025 301!
+/en/blog-2.html /en/blog/etoro-fees-2025 301!
+/en/blog-2/ /en/blog/etoro-fees-2025 301!
+/en/blog-3 /en/blog/copytrading-start-2025 301!
+/en/blog-3.html /en/blog/copytrading-start-2025 301!
+/en/blog-3/ /en/blog/copytrading-start-2025 301!
+
+/es/blog-1 /es/blog/por-que-elegir-etoro-2025 301!
+/es/blog-1.html /es/blog/por-que-elegir-etoro-2025 301!
+/es/blog-1/ /es/blog/por-que-elegir-etoro-2025 301!
+/es/blog-2 /es/blog/comisiones-etoro-2025 301!
+/es/blog-2.html /es/blog/comisiones-etoro-2025 301!
+/es/blog-2/ /es/blog/comisiones-etoro-2025 301!
+/es/blog-3 /es/blog/copytrading-empezar-2025 301!
+/es/blog-3.html /es/blog/copytrading-empezar-2025 301!
+/es/blog-3/ /es/blog/copytrading-empezar-2025 301!
+
+/de/blog-1 /de/blog/warum-etoro-2025 301!
+/de/blog-1.html /de/blog/warum-etoro-2025 301!
+/de/blog-1/ /de/blog/warum-etoro-2025 301!
+/de/blog-2 /de/blog/etoro-gebuehren-2025 301!
+/de/blog-2.html /de/blog/etoro-gebuehren-2025 301!
+/de/blog-2/ /de/blog/etoro-gebuehren-2025 301!
+/de/blog-3 /de/blog/copytrading-start-2025 301!
+/de/blog-3.html /de/blog/copytrading-start-2025 301!
+/de/blog-3/ /de/blog/copytrading-start-2025 301!
 
 # Next export: serve pages for pretty URLs (avoid folder vs .html issues on static hosts)
 /blog /blog.html 200
@@ -40,23 +96,21 @@ https://www.trading-verifie.com/* https://trading-verifie.com/:splat 301!
 /copytrading-demarrer-2025 /copytrading-demarrer-2025.html 200
 /copytrading-demarrer-2025/ /copytrading-demarrer-2025.html 200
 
+# Locales (Next export): serve pages for pretty URLs
+/en /en.html 200
+/en/ /en.html 200
+/en/*/ /en/:splat.html 200
+/en/* /en/:splat.html 200
+
+/es /es.html 200
+/es/ /es.html 200
+/es/*/ /es/:splat.html 200
+/es/* /es/:splat.html 200
+
+/de /de.html 200
+/de/ /de.html 200
+/de/*/ /de/:splat.html 200
+/de/* /de/:splat.html 200
+
 # Old /blog/<slug> -> new /<slug>
 /blog/* /:splat 301!
-
-# Legacy locales -> French equivalents (keep SEO 1:1 where possible)
-/en/legal-notice /mentions-legales 301!
-/en/privacy-policy /politique-de-confidentialite 301!
-/es/legal-notice /mentions-legales 301!
-/es/privacy-policy /politique-de-confidentialite 301!
-/de/legal-notice /mentions-legales 301!
-/de/privacy-policy /politique-de-confidentialite 301!
-
-/en/ / 301!
-/en / 301!
-/en/* /:splat 301!
-/es/ / 301!
-/es / 301!
-/es/* /:splat 301!
-/de/ / 301!
-/de / 301!
-/de/* /:splat 301!

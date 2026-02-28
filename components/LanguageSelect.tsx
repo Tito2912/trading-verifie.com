@@ -3,34 +3,44 @@
 import { usePathname } from 'next/navigation';
 import { useId } from 'react';
 
-type Lang = 'fr' | 'en';
+type Lang = 'fr' | 'en' | 'es' | 'de';
 
 const LANGS: Array<{ code: Lang; label: string }> = [
   { code: 'fr', label: 'FR' },
   { code: 'en', label: 'EN' },
+  { code: 'es', label: 'ES' },
+  { code: 'de', label: 'DE' },
 ];
 
 const ROUTES: Array<Record<Lang, string>> = [
-  { fr: '/', en: '/en' },
-  { fr: '/blog', en: '/en/blog' },
-  { fr: '/guide-etoro', en: '/en/guide-etoro' },
-  { fr: '/bitpanda', en: '/en/bitpanda' },
-  { fr: '/mentions-legales', en: '/en/legal-notice' },
+  { fr: '/', en: '/en', es: '/es', de: '/de' },
+  { fr: '/blog', en: '/en/blog', es: '/es/blog', de: '/de/blog' },
+  { fr: '/guide-etoro', en: '/en/guide-etoro', es: '/es/guide-etoro', de: '/de/guide-etoro' },
+  { fr: '/bitpanda', en: '/en/bitpanda', es: '/es/bitpanda', de: '/de/bitpanda' },
+  { fr: '/mentions-legales', en: '/en/legal-notice', es: '/es/legal-notice', de: '/de/legal-notice' },
   {
     fr: '/politique-de-confidentialite',
     en: '/en/privacy-policy',
+    es: '/es/privacy-policy',
+    de: '/de/privacy-policy',
   },
   {
     fr: '/pourquoi-choisir-etoro-2025',
     en: '/en/blog/why-choose-etoro-2025',
+    es: '/es/blog/por-que-elegir-etoro-2025',
+    de: '/de/blog/warum-etoro-2025',
   },
   {
     fr: '/frais-etoro-2025',
     en: '/en/blog/etoro-fees-2025',
+    es: '/es/blog/comisiones-etoro-2025',
+    de: '/de/blog/etoro-gebuehren-2025',
   },
   {
     fr: '/copytrading-demarrer-2025',
     en: '/en/blog/copytrading-start-2025',
+    es: '/es/blog/copytrading-empezar-2025',
+    de: '/de/blog/copytrading-start-2025',
   },
 ];
 
@@ -43,6 +53,8 @@ function normalizePathname(pathname: string): string {
 function getLangFromPathname(pathname: string): Lang {
   const p = normalizePathname(pathname);
   if (p === '/en' || p.startsWith('/en/')) return 'en';
+  if (p === '/es' || p.startsWith('/es/')) return 'es';
+  if (p === '/de' || p.startsWith('/de/')) return 'de';
   return 'fr';
 }
 
@@ -64,6 +76,14 @@ export function LanguageSelect() {
   const selectId = useId();
   const pathname = usePathname() ?? '/';
   const currentLang = getLangFromPathname(pathname);
+  const label =
+    currentLang === 'en'
+      ? 'Language'
+      : currentLang === 'es'
+        ? 'Idioma'
+        : currentLang === 'de'
+          ? 'Sprache'
+          : 'Langue';
 
   return (
     <div className="lang-select-container">
@@ -71,7 +91,7 @@ export function LanguageSelect() {
         <img alt="" height={18} src="/images/globe.svg" width={18} />
       </span>
       <label className="sr-only" htmlFor={selectId}>
-        Langue
+        {label}
       </label>
       <select
         className="lang-select"
