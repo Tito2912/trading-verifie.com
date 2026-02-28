@@ -8,8 +8,10 @@ export function SiteHeader() {
         <div className="brand-group">
           <a aria-label="Accueil" className="brand" href="/">
             <Image alt="Guide eToro" height={36} priority src="/images/logo.png" width={120} />
-            <span>Guide eToro</span>
           </a>
+          <Link className="brand" href="/guide-etoro">
+            Guide eToro
+          </Link>
           <Link className="brand" href="/bitpanda">
             Guide Bitpanda
           </Link>

@@ -1,43 +1,50 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getAllPages, getPostBySlug } from '@/lib/content';
+import type { Metadata } from 'next';
+import { getAllPages } from '@/lib/content';
 
-export async function generateMetadata(): Promise<Metadata> {
-  const home = await getPostBySlug('_home');
-  if (!home) return {};
-
-  return {
-    title: home.title,
-    description: home.description,
-    alternates: { canonical: home.canonical ?? '/' },
-    openGraph: {
-      type: 'website',
-      title: home.title,
-      description: home.description,
-      url: home.canonical ?? '/',
-    },
-  };
-}
+export const metadata: Metadata = {
+  title: 'Accueil',
+  description:
+    'Accédez à toutes les pages du site : guides (eToro, Bitpanda), articles et pages légales.',
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    title: 'Guide eToro',
+    description:
+      'Accédez à toutes les pages du site : guides (eToro, Bitpanda), articles et pages légales.',
+    url: '/',
+  },
+};
 
 export default async function HomePage() {
-  const home = await getPostBySlug('_home');
-  if (!home) return notFound();
-
   const pages = await getAllPages();
+  const pinned = new Set(['guide-etoro', 'bitpanda']);
 
   return (
     <div className="stack">
-      <div lang="fr">{home.content}</div>
+      <section className="hero">
+        <h1>Toutes les pages</h1>
+        <p>Guides, articles et pages légales.</p>
+      </section>
 
       <section className="card" aria-label="Pages du site">
-        <h2>Toutes les pages</h2>
+        <h2>Pages</h2>
         <ul className="list">
+          <li>
+            <Link href="/guide-etoro">Guide eToro</Link>
+            <div className="muted">Page principale : CopyTrading, frais et sécurité.</div>
+          </li>
+          <li>
+            <Link href="/bitpanda">Guide Bitpanda</Link>
+            <div className="muted">Avis Bitpanda : fonctionnalités, frais (vue d’ensemble) et risques.</div>
+          </li>
           <li>
             <Link href="/blog">Blog</Link>
             <div className="muted">Tous les articles et guides.</div>
           </li>
-          {pages.map((p) => (
+          {pages
+            .filter((p) => !pinned.has(p.slug))
+            .map((p) => (
             <li key={p.slug}>
               <Link href={`/${p.slug}`}>{p.title}</Link>
               <div className="muted">{p.description}</div>
