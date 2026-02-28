@@ -59,24 +59,29 @@ export async function getAllSlugs(): Promise<string[]> {
 
 export async function getAllPosts(): Promise<Array<Pick<Post, 'slug' | 'title' | 'description' | 'updatedAt' | 'date'>>> {
   const slugs = await getAllSlugs();
-  const posts = await Promise.all(
-    slugs
-      .filter((slug) => !EXCLUDE_FROM_INDEX.has(slug))
-      .map(async (slug) => {
-        const raw = await fs.readFile(path.join(CONTENT_DIR, `${slug}.mdx`), 'utf8');
-        const { data } = matter(raw);
-        const fm = data as Frontmatter;
-        return {
-          slug,
-          title: fm.title,
-          description: fm.description,
-          date: fm.date,
-          updatedAt: fm.updatedAt,
-        };
-      }),
-  );
-
+  const posts = await Promise.all(slugs.filter((slug) => !EXCLUDE_FROM_INDEX.has(slug)).map(readIndexItem));
   return posts;
+}
+
+export async function getAllPages(): Promise<Array<Pick<Post, 'slug' | 'title' | 'description' | 'updatedAt' | 'date'>>> {
+  const slugs = await getAllSlugs();
+  const pages = await Promise.all(slugs.map(readIndexItem));
+  return pages;
+}
+
+async function readIndexItem(
+  slug: string,
+): Promise<Pick<Post, 'slug' | 'title' | 'description' | 'updatedAt' | 'date'>> {
+  const raw = await fs.readFile(path.join(CONTENT_DIR, `${slug}.mdx`), 'utf8');
+  const { data } = matter(raw);
+  const fm = data as Frontmatter;
+  return {
+    slug,
+    title: fm.title,
+    description: fm.description,
+    date: fm.date,
+    updatedAt: fm.updatedAt,
+  };
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
