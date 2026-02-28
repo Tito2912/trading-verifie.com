@@ -45,11 +45,11 @@ export default async function HomePage() {
           {pages
             .filter((p) => !pinned.has(p.slug))
             .map((p) => (
-            <li key={p.slug}>
-              <Link href={`/${p.slug}`}>{p.title}</Link>
-              <div className="muted">{p.description}</div>
-            </li>
-          ))}
+              <li key={p.slug}>
+                <Link href={`/${p.slug}`}>{p.title}</Link>
+                <div className="muted">{p.description}</div>
+              </li>
+            ))}
         </ul>
       </section>
     </div>
