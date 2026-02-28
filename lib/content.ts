@@ -19,13 +19,14 @@ type Frontmatter = {
   date?: string;
   updatedAt?: string;
   canonical?: string;
-  type: PostType;
+  type?: PostType;
   primaryKeyword?: string;
   jumpLinks?: { href: string; label: string }[];
   quickAnswer?: string[];
   cta?: { title: string; body: string; buttonLabel: string; buttonHref: string };
   internalLinks?: { href: string; anchor: string }[];
   faq?: { q: string; a: string }[];
+  translationKey?: string;
 };
 
 function extractHeadingsFromMdxSource(source: string): TocHeading[] {
@@ -204,9 +205,67 @@ async function readIndexItem(
   };
 }
 
+type Locale = 'en' | 'es' | 'de';
+
+export async function getLocalizedPage(lang: Locale, slug: string): Promise<Post | null> {
+  const filePath = path.join(CONTENT_DIR, lang, `${slug}.mdx`);
+  const canonicalFallback = `/${lang}/${slug}`;
+  return getPostByFilePath({ filePath, slug, canonicalFallback });
+}
+
+export async function getLocalizedBlogSlugs(lang: Locale): Promise<string[]> {
+  const dirPath = path.join(CONTENT_DIR, lang, 'blog');
+  let entries: Array<{ name: string; isDirectory: () => boolean }>;
+  try {
+    entries = (await fs.readdir(dirPath, { withFileTypes: true })) as any;
+  } catch {
+    return [];
+  }
+
+  return entries.filter((d) => d.isDirectory()).map((d) => d.name).sort();
+}
+
+export async function getLocalizedBlogPosts(
+  lang: Locale,
+): Promise<Array<Pick<Post, 'slug' | 'title' | 'description' | 'updatedAt' | 'date'>>> {
+  const slugs = await getLocalizedBlogSlugs(lang);
+  const items = await Promise.all(
+    slugs.map(async (slug) => {
+      const raw = await fs.readFile(path.join(CONTENT_DIR, lang, 'blog', slug, 'index.mdx'), 'utf8');
+      const { data } = matter(raw);
+      const fm = data as Frontmatter;
+      return {
+        slug,
+        title: fm.title,
+        description: fm.description,
+        date: fm.date,
+        updatedAt: fm.updatedAt,
+      };
+    }),
+  );
+  return items;
+}
+
+export async function getLocalizedBlogPost(lang: Locale, slug: string): Promise<Post | null> {
+  const filePath = path.join(CONTENT_DIR, lang, 'blog', slug, 'index.mdx');
+  const canonicalFallback = `/${lang}/blog/${slug}`;
+  return getPostByFilePath({ filePath, slug, canonicalFallback });
+}
+
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   const filePath = path.join(CONTENT_DIR, `${slug}.mdx`);
+  return getPostByFilePath({ filePath, slug, canonicalFallback: `/${slug}` });
+}
 
+async function getPostByFilePath({
+  filePath,
+  slug,
+  canonicalFallback,
+}: {
+  filePath: string;
+  slug: string;
+  canonicalFallback: string;
+}): Promise<Post | null> {
   let raw: string;
   try {
     raw = await fs.readFile(filePath, 'utf8');
@@ -237,8 +296,8 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     description: frontmatter.description,
     date: frontmatter.date,
     updatedAt: frontmatter.updatedAt,
-    canonical: frontmatter.canonical,
-    type: frontmatter.type,
+    canonical: frontmatter.canonical ?? canonicalFallback,
+    type: frontmatter.type ?? 'guide',
     primaryKeyword: frontmatter.primaryKeyword,
     jumpLinks: frontmatter.jumpLinks,
     quickAnswer: frontmatter.quickAnswer,
