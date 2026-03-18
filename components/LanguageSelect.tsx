@@ -25,6 +25,30 @@ const ROUTES: Array<Record<Lang, string>> = [
     de: '/de/privacy-policy',
   },
   {
+    fr: '/a-propos',
+    en: '/en/about',
+    es: '/es/sobre',
+    de: '/de/uber-uns',
+  },
+  {
+    fr: '/methodologie',
+    en: '/en/methodology',
+    es: '/es/metodologia',
+    de: '/de/methodik',
+  },
+  {
+    fr: '/sources',
+    en: '/en/sources',
+    es: '/es/fuentes',
+    de: '/de/quellen',
+  },
+  {
+    fr: '/contact',
+    en: '/en/contact',
+    es: '/es/contacto',
+    de: '/de/kontakt',
+  },
+  {
     fr: '/pourquoi-choisir-etoro-2025',
     en: '/en/blog/why-choose-etoro-2025',
     es: '/es/blog/por-que-elegir-etoro-2025',
@@ -41,6 +65,30 @@ const ROUTES: Array<Record<Lang, string>> = [
     en: '/en/blog/copytrading-start-2025',
     es: '/es/blog/copytrading-empezar-2025',
     de: '/de/blog/copytrading-start-2025',
+  },
+  {
+    fr: '/etoro-securite-regulation-2026',
+    en: '/en/blog/etoro-safety-regulation-2026',
+    es: '/es/blog/etoro-seguridad-regulacion-2026',
+    de: '/de/blog/etoro-sicherheit-regulierung-2026',
+  },
+  {
+    fr: '/etoro-depot-retrait-2026',
+    en: '/en/blog/etoro-deposits-withdrawals-2026',
+    es: '/es/blog/etoro-depositos-retiros-2026',
+    de: '/de/blog/etoro-einzahlung-auszahlung-2026',
+  },
+  {
+    fr: '/alternatives-etoro-2026',
+    en: '/en/blog/etoro-alternatives-2026',
+    es: '/es/blog/alternativas-etoro-2026',
+    de: '/de/blog/etoro-alternativen-2026',
+  },
+  {
+    fr: '/etoro-fiscalite-2026',
+    en: '/en/blog/etoro-tax-2026',
+    es: '/es/blog/etoro-fiscalidad-2026',
+    de: '/de/blog/etoro-steuern-2026',
   },
 ];
 

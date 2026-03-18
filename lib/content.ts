@@ -11,6 +11,10 @@ const EXCLUDE_FROM_INDEX = new Set([
   'politique-de-confidentialite',
   'bitpanda',
   'guide-etoro',
+  'a-propos',
+  'methodologie',
+  'sources',
+  'contact',
 ]);
 
 type Frontmatter = {
