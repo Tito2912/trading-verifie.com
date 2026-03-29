@@ -9,10 +9,10 @@ a:hover{text-decoration:underline}
 .stack>*+*{margin-top:18px}
 .header{border-bottom:1px solid var(--border);background:#fff;position:sticky;top:0;z-index:10}
 .header-inner{max-width:960px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-.brand-group{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand-group{display:flex;align-items:center;gap:14px;flex-wrap:nowrap}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-0.02em}
-.header-right{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-end}
-.nav{display:flex;gap:14px;flex-wrap:wrap}
+.header-right{display:flex;align-items:center;gap:14px;flex-wrap:nowrap;justify-content:flex-end}
+.nav{display:flex;gap:14px;flex-wrap:nowrap}
 .lang-select-container{display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--border);border-radius:12px;background:#fff}
 .lang-select{border:0;background:transparent;font:inherit;color:inherit;cursor:pointer}
 .lang-select:focus{outline:3px solid #1e40af;outline-offset:2px;border-radius:10px}
@@ -53,3 +53,10 @@ a:hover{text-decoration:underline}
 .popup-message{margin-top:12px;padding:12px;border:1px solid var(--border);border-radius:12px;background:#fff}
 .popup-message.hidden{display:none}
 .popup-message.active{display:block}
+
+@media (max-width: 860px){
+  .header-inner{flex-wrap:wrap}
+  .brand-group{flex-wrap:wrap}
+  .header-right{flex-wrap:wrap}
+  .nav{flex-wrap:wrap}
+}

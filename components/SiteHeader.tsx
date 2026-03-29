@@ -59,7 +59,7 @@ export function SiteHeader() {
           </Link>
           {lang === 'fr' ? (
             <Link className="brand" href={nickelHref}>
-              Compte Nickel
+              Nickel
             </Link>
           ) : null}
         </div>
