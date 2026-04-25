@@ -1,6 +1,7 @@
 export const SITE = {
   baseUrl: 'https://trading-verifie.com',
   domain: 'trading-verifie.com',
+  ga4Id: 'G-7936NTC37J',
   defaultLang: 'fr',
   supportedLangs: ['fr', 'en', 'es', 'de'] as const,
 } as const;
