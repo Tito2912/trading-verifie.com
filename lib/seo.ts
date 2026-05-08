@@ -193,11 +193,14 @@ export async function buildAlternatesForBlogPost({
   slug,
   canonical,
 }: {
-  lang: Exclude<Lang, 'fr'>;
+  lang: Lang;
   slug: string;
   canonical: string;
 }): Promise<Metadata['alternates']> {
-  const currentPath = path.join(CONTENT_DIR, lang, 'blog', slug, 'index.mdx');
+  const currentPath =
+    lang === SITE.defaultLang
+      ? path.join(CONTENT_DIR, `${slug}.mdx`)
+      : path.join(CONTENT_DIR, lang, 'blog', slug, 'index.mdx');
   const currentFm = await readFrontmatterFromMdx(currentPath);
   if (currentFm?.translationKey) {
     const index = await getTranslationIndex();
@@ -210,11 +213,13 @@ export async function buildAlternatesForBlogPost({
   const languages: Record<string, string> = {};
 
   for (const l of SITE.supportedLangs) {
-    if (l === SITE.defaultLang) continue;
-    const filePath = path.join(CONTENT_DIR, l, 'blog', slug, 'index.mdx');
+    const filePath =
+      l === SITE.defaultLang
+        ? path.join(CONTENT_DIR, `${slug}.mdx`)
+        : path.join(CONTENT_DIR, l, 'blog', slug, 'index.mdx');
     if (!(await exists(filePath))) continue;
     const fm = await readFrontmatterFromMdx(filePath);
-    languages[l] = fm?.canonical ?? `/${l}/blog/${slug}`;
+    languages[l] = fm?.canonical ?? (l === SITE.defaultLang ? pageHref(l, slug) : `/${l}/blog/${slug}`);
   }
 
   return { canonical, languages: Object.keys(languages).length ? languages : undefined };
